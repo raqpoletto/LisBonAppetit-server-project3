@@ -8,6 +8,7 @@ const restaurantSchema = new Schema({
   address: { type: String },
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   averagePrice: { type: Number },
+  /* typeOfCuisine : [{}] */
 });
 
 const Restaurant = model("Restaurant", restaurantSchema);

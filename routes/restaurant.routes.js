@@ -6,7 +6,7 @@ const Restaurant = require("../models/Restaurant.model");
 //GET all restaurants
 router.get("/restaurant", (req, res, next) => {
   Restaurant.find()
-    /* .populate("comment") */
+    .populate("comments")
     .then((restaurant) => res.status(200).json(restaurant))
     .catch((err) => res.json(err));
 });
