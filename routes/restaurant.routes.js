@@ -34,7 +34,7 @@ router.post("/restaurant", (req, res, next) => {
 router.put("/restaurant/:restaurantId", (req, res, next) => {
   const { restaurantId } = req.params;
 
-  Restaurant.findByIdAndUpdate(restaurantId, req.body, { new: true })
+  Restaurant.findByIdAndUpdate(id, req.body, { new: true })
 
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
@@ -44,7 +44,7 @@ router.put("/restaurant/:restaurantId", (req, res, next) => {
 router.delete("/restaurant/:restaurantId", (req, res, next) => {
   const { restaurantId } = req.params;
 
-  Restaurant.findByIdAndRemove(restaurantId)
+  Restaurant.findByIdAndRemove(id)
 
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
