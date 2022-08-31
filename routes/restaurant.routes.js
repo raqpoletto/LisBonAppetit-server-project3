@@ -67,4 +67,28 @@ router.get("/restaurant/:restaurantId", (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
+//so the user can comment
+/* router.get("/restaurants", (req, res, next) => {
+  Restaurant.find()
+    .populate("comments")
+    .then((allRestaurants) => res.json(allRestaurants))
+    .catch((err) => res.json(err));
+});
+
+router.get("/restaurants/:restaurantId", (req, res, next) => {
+  const { restaurantId } = req.params;
+
+  Restaurant.findById(restaurantId)
+    .populate("comments")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "author",
+        model: "User",
+      },
+    })
+    .then((response) => res.json(response))
+    .catch((err) => res.json(err));
+}); */
+
 module.exports = router;
