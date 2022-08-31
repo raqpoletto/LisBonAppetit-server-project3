@@ -19,7 +19,7 @@ router.put("/profile/:userId", (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
-router.put("/addfavourite", (req, res, next) => {
+router.put("/favourites", (req, res, next) => {
   const { userId, restaurantId } = req.body;
 
   User.findById(userId)
