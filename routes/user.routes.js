@@ -11,8 +11,10 @@ router.get("/profile/:userId", (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
+//Edit user by id
 router.put("/profile/:userId", (req, res, next) => {
   const { userId } = req.params;
+  const { name, email, imageProfile } = req.body;
 
   User.findByIdAndUpdate(userId, req.body, { new: true })
     .then((response) => res.json(response))

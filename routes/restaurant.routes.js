@@ -14,8 +14,15 @@ router.get("/restaurant", (req, res, next) => {
 //Create a new restaurant so I can test it - admin only
 //If user.role === "user" and admin
 router.post("/restaurant", (req, res, next) => {
-  const { name, description, imageUrl, contact, address, averagePrice } =
-    req.body;
+  const {
+    name,
+    description,
+    imageUrl,
+    contact,
+    address,
+    averagePrice,
+    typeOfFood,
+  } = req.body;
 
   Restaurant.create({
     name,
@@ -24,6 +31,7 @@ router.post("/restaurant", (req, res, next) => {
     contact,
     address,
     averagePrice,
+    typeOfFood,
   })
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
@@ -41,6 +49,7 @@ router.put("/restaurant/:restaurantId", (req, res, next) => {
     comments,
     averagePrice,
     imageUrl,
+    typeOfFood,
   } = req.body;
 
   Restaurant.findByIdAndUpdate(restaurantId, req.body, { new: true })
@@ -77,7 +86,7 @@ router.get("/restaurant/:restaurantId", (req, res, next) => {
 });
 
 //so the user can comment
-/* router.get("/restaurants", (req, res, next) => {
+router.get("/restaurants", (req, res, next) => {
   Restaurant.find()
     .populate("comments")
     .then((allRestaurants) => res.json(allRestaurants))
@@ -98,6 +107,6 @@ router.get("/restaurants/:restaurantId", (req, res, next) => {
     })
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
-}); */
+});
 
 module.exports = router;
