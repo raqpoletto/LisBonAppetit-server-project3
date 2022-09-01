@@ -107,11 +107,15 @@ router.post("/login", (req, res, next) => {
           return res.status(400).json({ errorMessage: "Wrong credentials." });
         }
 
-        const { _id, email } = user; // destructuring the user object, that's what i need to send to the client
+        const { _id, email, imageProfile, name, role, comments } = user; // destructuring the user object, that's what i need to send to the client
 
         const payload = {
           _id,
           email,
+          imageProfile,
+          name,
+          role,
+          comments,
         }; //i want those on the user profile
 
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {

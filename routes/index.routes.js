@@ -21,4 +21,5 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
   res.json({ fileUrl: req.file.path });
 });
 
+router.use("/auth", authRoutes);
 module.exports = router;
